@@ -1,0 +1,115 @@
+ {%load static%}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Signup </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css' %}" />
+    
+     <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
+
+ <script src="{% static 'analysisreport/js/validations.js' %}"></script>
+
+</head>
+
+<body>
+<form  id="myform" action=" " method="POST">{% csrf_token %}
+<div class="page-header" style="background-color: grey;">
+    <h1 style="height: 20px;  ">Analysis & Reporting</h1>      
+  </div>
+   
+
+    <div class="container" style="text-align:center;">
+        <h3 style="text-align:center;">	Signup</h3>
+        <div class=" input-group form-group col-lg-offset-4" style="width: 400px;">
+             
+    <label for="Username" style="float: left;">Username</label>
+            <input type="text" id="Username" class="form-control" id="Username" name="Username">
+        </div>
+        
+
+        <div class="form-group col-lg-offset-4" style="width: 400px;" >
+    <label for="e_mail" style="float: left">Email address:</label>
+    <input type="email "  class="form-control " id="e_mail " name="e_mail">
+  </div>
+  
+  <div class="form-group col-lg-offset-4 " style="width: 400px;">
+            <label for="password1" style="float: left;">Password:</label>
+            <input type="password" class="form-control " id="password1" name="password1">
+        </div>
+        <div class="form-group col-lg-offset-4" style="width: 400px;">
+            <label for="password_again" style="float: left;">Re enter password:</label>
+            <input type="password" style="float: left;" class="form-control " id="password_again" name="password_again">
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-sm-9">
+                <input value="Submit" type="submit" style="background-color: grey;" class="btn btn-default" id="submit" />
+            </div>
+            <div class="col-sm-3 col-sm-pull-2">
+                <p>Already a member? <a href="login"> Login </a> here</p>
+                 
+            </div>
+        </div>
+        </div>
+        </form>
+ 
+
+
+
+
+
+        
+</body>
+
+
+
+
+
+
+
+
+<!--
+<script>
+$(document).ready(function() {
+$jQuery.validator.addMethod("e_mail", function(value, element)
+{
+return this.optional(element) || /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/i.test(value);
+}, "Please enter a valid email address.");
+
+$jQuery.validator.addMethod("Username",function(value,element)
+{
+return this.optional(element) || /^[a-zA-Z0-9._-]{8,18}$/i.test(value);
+},"Username are 3-15 characters");
+
+$jQuery.validator.addMethod("password1",function(value,element)
+{
+return this.optional(element) || /^[A-Za-z0-9!@#$%^&*()_]{8,8}$/i.test(value);
+},"Passwords are 8 characters");
+
+// Validate signup form
+$("#myform").validate({
+rules: {
+e_mail: "required email",
+Username: "required Username",
+password1: "required password",
+password_again:"required password_again"
+},
+});
+});
+
+</script>-->
+
+ 
+</html>
