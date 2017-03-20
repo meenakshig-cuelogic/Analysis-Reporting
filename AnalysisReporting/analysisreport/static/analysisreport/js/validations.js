@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 
     jQuery.validator.addMethod("user_chk", function(value, element) {
+        debugger;
 
         if (/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+(?:\S{5,10})$/.test(value)) {
             return true;
@@ -27,7 +28,7 @@ $(document).ready(function() {
 
     jQuery.validator.addMethod("pass_chk", function(value, element) {
 
-        if (/^[A-Za-z0-9!@#$%^&*()_]{8,8}$/i.test(value)) {
+        if (/^[A-Za-z0-9!@#$%^&*()_]{2,3}$/i.test(value)) {
             return true;
 
         } else {
@@ -39,19 +40,19 @@ $(document).ready(function() {
 
     $('#myform').validate({
         rules: {
-            Username: {
+            username: {
                 user_chk: true,
                 required: true
             },
-            password1:
+            password:
             { 
                 required:true,
                 pass_chk:true
             },
             password_again: {
-                equalTo: "#password1"
+                equalTo: "#password"
             },
-            e_mail: {
+            email: {
                 email_chk: true,
                 required: true
             }

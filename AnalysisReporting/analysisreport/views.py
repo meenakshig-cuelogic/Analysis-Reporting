@@ -6,56 +6,109 @@ from django.http import Http404,HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login 
+from django.contrib.auth.views import login 
+
 from django.views.generic import View
 from analysisreport.forms import UserForm
 from django.core.exceptions import ObjectDoesNotExist
  
- 
+
+'''def register(request):
+     
+     
+    
+    if request.method=='POST':
+        form=UserForm(request.POST)
+         
+        if form.is_valid():
+            username=form.cleaned_data['Username']
+            email=form.cleaned_data['e_mail']
+            password=form.cleaned_data['password1']
+            if not (User.objects.filter(username=username).exists() or User.objects.filter(username=username).exists()):
+                User.objects.create_user(username,email,password)
+                user=authenticate(username=Username,password=password)
+                login(request,user)     
+                form.save(commit=True)
+                user.save()
+                         
+                 
+                    
+                    # subject="hello account creation successful"
+                    # message=" click the link below to login %s"%url, 
+                    # from_email=settings.EMAIL_HOST_USER
+                    # to_list=[User.email]
+                    # send_mail(subject,message,from_email,to_list,fail_silently=true)
+                    
+                return HttpResponse("/login")
+                     
+             
+            else:
+                return HttpResponse("please give a unique name")
+    return HttpResponse("sorryyy!!")'''
+    #return render(request,'analysisreport/registration_form.html',{'form': form})
+
+
 class UserFormView(View):
 
 
     form_class=UserForm
     template_name='analysisreport/registration_form.html'
-
+     
     def home(request):
         return render(request, 'analysisreport/home.html')
 
 
     def get(self,request):
-        form=self.form_class(None)
+        form=self.form_class(request.POST)
         return render(request,self.template_name,{'form': form})
 
 
     def post(self,request):
-
-        if request.method=='POST':
+        
+        if request.method =='POST':
             form=self.form_class(request.POST)
             if form.is_valid():
-                
-                username=form.cleaned_data['Username']
-                password=form.cleaned_data['password1']
-                email=form.cleaned_data['e_mail']
+                 
+                username=form.cleaned_data['username']
+                email=form.cleaned_data['email']
+                password=form.cleaned_data['password']
+                 
+
+              
                 if not (User.objects.filter(username=username).exists() or User.objects.filter(username=username).exists()):
                     User.objects.create_user(username,email,password)
-                      
-                     
-                    user=authenticate(username=Username,password=password)
-                    login(request,user)
-                    form.save()
-                    subject="hello account creation successful"
-                    message=" click the link below to login %s"%url, 
-                    from_email=settings.EMAIL_HOST_USER
-                    to_list=[User.email]
-                    send_mail(subject,message,from_email,to_list,fail_silently=true)
                     
-                    return HttpResponse("/")
+
+                    user=authenticate(username=username,password=password)
+                    login(request,user)
+                     
+                    
+                    # assert False, form.save()
+                    # return HttpResponse("success")
+                    #user.save()
+                    return render(request,'analysisreport/loginpage.html',{'form': form})
+                    
+
+                    # subject="hello account creation successful"
+                    # message=" click the link below to login %s"%url, 
+                    # from_email=settings.EMAIL_HOST_USER
+                    # to_list=[User.email]
+                    # send_mail(subject,message,from_email,to_list,fail_silently=true)
+                
+                    #return render(request,'analysisreport/loginpage.html',{'form': form})                    
+
+                     
+                    
                      
              
                 else:
-                    return HttpResponse("already exists")
-        return render(request,self.template_name,{'form': form}) 
-    
-def login(request):
+                    HttpResponse("please give a unique name")
+
+        return render(request,self.template_name,{'form': form})
+     
+
+
+def Login(request):
         form=UserForm(None)
         return render(request,'analysisreport/loginpage.html',{'form': form}) 
    
