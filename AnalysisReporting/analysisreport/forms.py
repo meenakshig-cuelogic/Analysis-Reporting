@@ -22,5 +22,4 @@ class UserForm(forms.ModelForm):
 	class Meta:
 		model=User
 		fields=['username','email','password','password_again']
-    	#email = forms.EmailField(widget=forms.TextInput(attrs={'size':'50'}))
-         
+    	 
