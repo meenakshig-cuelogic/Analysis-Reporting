@@ -1,77 +1,3 @@
-// $(document).ready(function() {
-
-
-//     jQuery.validator.addMethod("user_chk", function(value, element) {
-        
-
-//         if (/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+(?:\S{5,10})$/.test(value)) {
-//             return true;
-
-//         } else {
-//             return false;
-
-//         };
-//     }, ' Please enter a valid username between 5 to 10 characters.\n');
-
-
-
-//     jQuery.validator.addMethod("email_chk", function(value, element) {
-
-//         if (/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@(?:\S{1,63})$/.test(value)) {
-//             return true;
-
-//         } else {
-//             return false;
-
-//         };
-//     }, 'Please enter a valid email.suggestions:Prefer Active mail 2.no spaces');
-
-//     jQuery.validator.addMethod("pass_chk", function(value, element) {
-
-//         if (/^[A-Za-z0-9!@#$%^&*()_]{3,3}$/i.test(value)) {
-//             return true;
-
-//         } else {
-//             return false;
-
-//         };
-//     }, 'Please enter a valid password between with 8 charaters.');
-
-     
-
-
-//     $('#myform').validate({
-//         rules: {
-           
-//             username:
-//              {
-//                 user_chk: true,
-//                 required: true
-//             },
-//             password:
-//             { 
-//                 required:true,
-//                 pass_chk:true
-//             },
-
-             
-//             password_again: 
-//             {
-//                 equalTo: "#id_password",
-//                 required:true
-//             },
-
-//             email: {
-//                 email_chk: true,
-//                 required: true
-//             }
-//         }
-//     });
-
-
-// }); 
- 
-
 $(document).ready(function() {
     $('#myform').bootstrapValidator({
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
@@ -92,7 +18,7 @@ $(document).ready(function() {
                     }
                 }
             },
-         
+            
             email: {
                 validators: {
                     notEmpty: {
@@ -103,26 +29,27 @@ $(document).ready(function() {
                     }
                 }
             },
-     
-    password: 
-            {
+        
+      password: {
+        
+            
+
             validators:{
-            regexp:{    
-            regexp:/^[0-9]+$/,
-            message:"Password must contain atleast 1 number and 1 lowercase letter"
-            },
-         
-         
 
-
-            stringLength: {
+                stringLength: {
                     min: 8,
                     max: 16,
                     message:'password must be more than 8 character and less than 16 character long'
-             
-                },
-     
-     
+                
+            },
+
+                regexp:{    
+                    regexp:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-z\d]+$/,
+                    message:"Password must contain atleast 1 number and 1 letter Uppercase"
+            },
+            
+        
+        
             identical:{
                 field:"password_again",
                 message:"Confirm your password below"
@@ -137,9 +64,11 @@ $(document).ready(function() {
                         message:"The password and confirm are not same"
                     }
                 }
-            }
-     
-        }
+            },
+
+       
+        
+    }
 
 
     })

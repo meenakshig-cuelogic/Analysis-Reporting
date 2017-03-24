@@ -1,3 +1,4 @@
+import uuid
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -9,11 +10,12 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login 
 from django.contrib.auth.views import login 
 from django.views.generic import View
-from analysisreport.forms import UserForm
+from analysisreport.forms import *
 from django.core.exceptions import ObjectDoesNotExist
 from django import forms
 from analysisreport.models import emailverify
- 
+from datetime import datetime
+from datetime import datetime, timedelta
 import hashlib
 import os
 
@@ -50,9 +52,11 @@ class UserFormView(View):
                 if not (User.objects.filter(username=username).exists() or User.objects.filter(username=username).exists()):
                     u1=User.objects.create_user(username,email,password)
                     u1.is_active="False" 
+                    
                      
                     user=authenticate(username=username,password=password)
-                    login(request,user)
+                    # login(request,user)
+                    
                      
                     
                     #form.save()
@@ -61,24 +65,21 @@ class UserFormView(View):
                     #return HttpResponseRedirect('/login')
                     #return render(request,'analysisreport/loginpage.html',{'form2': form2})
                     
-                    self.hash1=hashlib.md5(user.email).hexdigest()[0:30]
+                    self.hash1=str(uuid.uuid1())
                   
                     e1=u1.emailverify_set.create(hashkey=self.hash1)
                     
-                    # if(e1.hashkey != null):
-                    #     u1.is_active=True
-                    #     return HttpResponse("Account verified")
-                    # else:
-                    #     return HttpResponse("Account not yet verified")
+
+                     
                    
 
 
                     subject="Welcome Account Creation Successful!!!!!"
                     from_email=settings.EMAIL_HOST_USER
                     to_list=[user.email]
-                    send_mail(subject,'please click the given link to log in: http://127.0.0.1:8000/analysisreport/login/?uid=%s'%(self.hash1),from_email,to_list,fail_silently=True)
+                    send_mail(subject,'please click the given link to log in: http://172.21.32.80:8000/analysisreport/email_verification/?uid=%s'%(self.hash1),from_email,to_list,fail_silently=True)
                     messages.success(request, ' email verification link has been sent to registered mail')
-        
+                    
                     return render(request,'analysisreport/email.html',{'form':form})                    
                     
                     #return HttpResponse("an email has been sent to you registered email id")
@@ -92,7 +93,7 @@ class UserFormView(View):
                     return HttpResponse("failed")
                     
                      
-        messages.warning(request, 'Already registered user email please prefer loging in.')
+        messages.warning(request, 'Already registered user please prefer loging in.')
         return render(request,self.template_name,{'form': form})
      
 
@@ -100,6 +101,7 @@ class UserFormView(View):
 def Login(request):
         form=UserForm(None)
         messages.warning(request, 'YOU HAVENT VERIFIED EMAIL YET')
+
         return render(request,'analysisreport/loginpage.html',{'form': form}) 
    
 def forgotpass(request):
@@ -109,6 +111,49 @@ def forgotpass(request):
 def landpage(request):
         form=UserForm(None)
         return render(request,'analysisreport/landingpage.html',{'form': form}) 
-   
+
+def home(request):
+    form=LoginForm()
+    return render(request,'analysisreport/home.html',{'form': form})
             
- 
+def login1(request):
+    if request.method == 'GET':
+            form = LoginForm()
+            return render(request,"analysisreport/loginpage.html",{'form':form})
+    if request.method == 'POST':
+        form = LoginForm(request.POST) 
+        if form.is_valid: 
+                username=form.data.get('username')
+                password=form.data.get('password')
+                user=authenticate(username=username,password=password)
+                if user is not None:
+                    if user.is_active:
+                        login(username,password)
+                        messages.warning(" pleaseverify your email")
+                        return render(request,"analysisreport/home.html",{'form':form})
+                    else:
+                        login(username,password)
+                        messages.success(" email verified")
+                        return render(request,"analysisreport/home.html",{'form':form})
+    
+    return render(request,"analysisreport/home.html",{'form':form})
+                 
+        
+    
+def email_verification(request):
+    hash1=request.GET.get('uid', '')
+    if (hash1):
+        emailverify_obj=emailverify.objects.get(hashkey=hash1)
+    else:
+        raise ValueError('incorrect hashkey')
+    time_date=emailverify_obj.Reg_time
+     
+    
+    if time_date < (datetime.now() - timedelta(hours=24)):
+        raise ValidationError('LinkExpired try one go for registration')
+
+    print "email"
+    username=User.objects.get(id=emailverify_obj.username.id)
+    username.is_active=True
+    messages.success(request, "you have verified your email")
+    return render(request,"analysisreport/loginpage.html")
