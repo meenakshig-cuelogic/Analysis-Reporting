@@ -1,0 +1,54 @@
+ 
+<!DOCTYPE html>
+<html>
+ {%load static%}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Signup </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" />
+    <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
+    <script src="{% static 'analysisreport/js/bootstrapvalidations.js' %}"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/signup.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+     <a href="analysisreport/landpage">
+     <img class="logo" alt="Brand" src="/static/analysisreport/media/logo.png">
+     </a>
+
+
+    
+    </div>
+
+    
+    <div class="collapse navbar-collapse" >
+       
+      <!-- not able to apply green color and alinment is not coming right -->
+      <ul class="nav navbar-nav navbar-right">
+        <li class="links"><a href="/analysisreport/landpage">HOME</a></li>
+        </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+ <h2>Home Page</h2>
+
+ <h2> Hello <div class="alert alert-{{ message.tags }}">{{form.username}}</div></h2>
+</body>
+</html>
+ 
