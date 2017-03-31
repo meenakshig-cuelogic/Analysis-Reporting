@@ -1,0 +1,79 @@
+
+body
+{
+	background-color: #e8f6fc;
+	font-family: 'Poppins', sans-serif;
+}
+
+.navbar-header
+{
+	background-color: white;
+}
+
+navbar navbar-default
+{
+	background-color: white;
+	padding-left: 50px;
+}
+.container-fluid
+{
+	background-color: white;
+	padding-left: 50px;
+	height: 50px;
+
+}
+
+.logo
+{
+	 
+	 padding-top: 5px;
+	 padding-left: 2px;
+	 height: 40px;
+
+}
+
+.collapse navbar-collapse
+{
+	color: green;
+}
+img
+{
+	 image-rendering:url("/static/analysisreport/media/logo.png");
+}
+
+.links
+{
+
+	color: green;
+ 	flood-color: green;
+}
+.navbar-default .navbar-nav>li>a {
+    color: green;
+    padding: 5px;
+    margin:0 0 5px;
+    margin-top: 5px;
+}
+
+a
+{
+	color: #7dc7e6;
+}
+
+
+h3
+{
+	text-align:center; 
+	padding: 20px;
+}
+.input-group-addon {
+	background-color:#7dc7e6;
+}
+.btn-default
+{
+	background-color: #3395ff;
+	color: white;
+
+}
+.form-group{
+	padding: 10px;
+}
