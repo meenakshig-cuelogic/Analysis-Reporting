@@ -14,10 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'analysisreport/js/bootstrapvalidations.js' %}"></script>
-          <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/signup.css' %}" />
-    
-    
 </head>
 
 <body>
@@ -31,7 +29,6 @@
                 <!-- not able to apply green color and alinment is not coming right -->
                 <ul class="nav navbar-nav navbar-right">
                     <li class="links"><a href="/analysisreport/landpage">HOME</a></li>
-                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -50,8 +47,7 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
-                                {{form.username}}
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> {{form.username}}
                             </div>
                         </div>
                         <div class="form-group">

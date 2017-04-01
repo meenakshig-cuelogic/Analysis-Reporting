@@ -1,79 +1,67 @@
-
-body
-{
-	background-color: #e8f6fc;
-	font-family: 'Poppins', sans-serif;
+body {
+    background-color: #e8f6fc;
+    font-family: 'Poppins', sans-serif;
 }
 
-.navbar-header
-{
-	background-color: white;
+.navbar-header {
+    background-color: white;
 }
 
-navbar navbar-default
-{
-	background-color: white;
-
-}
-.container-fluid{
-	background-color: white;
-	
-	height: 50px;
-
+navbar navbar-default {
+    background-color: white;
 }
 
-.logo{
-	 
-	 padding-top: 5px;
-	 padding-left: 2px;
-	 height: 40px;
-
+.container-fluid {
+    background-color: white;
+    height: 50px;
 }
 
-.collapse navbar-collapse{
-	color: green;
-}
-img{
-	 image-rendering:url("/static/analysisreport/media/logo.png");
+.logo {
+    padding-top: 5px;
+    padding-left: 2px;
+    height: 40px;
 }
 
-.links{
-
-	color: green;
- 	flood-color: green;
+.collapse navbar-collapse {
+    color: green;
 }
-.navbar-header{
 
+img {
+    image-rendering: url("/static/analysisreport/media/logo.png");
 }
+
+.links {
+    color: green;
+    flood-color: green;
+}
+
+.navbar-header {}
+
 .navbar-default .navbar-nav>li>a {
     color: green;
     padding: 5px;
-    margin:0 0 5px;
+    margin: 0 0 5px;
     margin-top: 10px;
-    
 }
 
-
-
-a
-{
-	color: #2196f3;
+a {
+    color: #2196f3;
 }
 
-
-h3
-{
-	text-align:center; 
-	padding: 20px;
+h3 {
+    text-align: center;
+    padding: 20px;
 }
+
 .input-group-addon {
-	background-color:#7dc7e6;
+    background-color: #7dc7e6;
 }
-.btn-default{
-	background-color: #3395ff;
-	color: white;
 
+.btn-default {
+    background-color: #3395ff;
+    color: white;
 }
-.form-group{
-	padding: 10px;
+
+.form-group {
+    padding: 10px;
 }

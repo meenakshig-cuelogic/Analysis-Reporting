@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
- {%load static%}
+{%load static%}
 <html>
 
 <head>
@@ -22,32 +22,26 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-     <a href="analysisreport/landpage">
-     <img class="logo" alt="Brand" src="/static/analysisreport/media/logo.png">
-     </a>
-
-
-    
-    </div>
-
-    
-    <div class="collapse navbar-collapse" >
-       
-      <!-- not able to apply green color and alinment is not coming right -->
-      <ul class="nav navbar-nav navbar-right">
-        <li class="links"><a href="/analysisreport/landpage">HOME</a></li>
-        </ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
- <h2>Home Page</h2>
-
- <h2> Hello <div class="alert alert-{{ message.tags }}">{{form.username}}</div></h2>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a href="analysisreport/landpage">
+                    <img class="logo" alt="Brand" src="/static/analysisreport/media/logo.png">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <!-- not able to apply green color and alinment is not coming right -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="links"><a href="/analysisreport/landpage">HOME</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <h2>Home Page</h2>
+    <h2> Hello <div class="alert alert-{{ message.tags }}">{{form.username}}</div></h2>
 </body>
+
 </html>
- 
