@@ -6,17 +6,18 @@
     <title> Signup </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" />
-    <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
-    <script src="{% static 'analysisreport/js/bootstrapvalidations.js' %}"></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/signup.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'analysisreport/js/bootstrapvalidations.js' %}"></script>
+          <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/signup.css' %}" />
+    
+    
 </head>
 
 <body>
@@ -49,7 +50,8 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> {{form.username}}
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
+                                {{form.username}}
                             </div>
                         </div>
                         <div class="form-group">

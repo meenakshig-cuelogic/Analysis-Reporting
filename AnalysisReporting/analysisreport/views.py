@@ -110,11 +110,11 @@ def login1(request):
                     if user.count():
                         user = user[0]
                         if user.is_active:
-                            messages.warning(request,"Incorrect Credentials")
+                            messages.warning(request,"User does not exists")
                         else:
                             messages.warning(request,"Activate your account")
                     else:       
-                        messages.warning(request,"User does not exist")
+                        messages.warning(request,"Incorrect Credentials")
                 return render(request,"analysisreport/loginpage.html",{'form':form})
                     
         return render(request,"analysisreport/loginpage.html",{'form':form})   
@@ -138,4 +138,13 @@ def email_verification(request):
 def import_file(request):
     form=LoginForm()
     return render(request,'analysisreport/import_file.html',{'form': form})
+def c_analysis(request):
+    form=LoginForm()
+    return render(request,'analysisreport/c_analysis.html',{'form': form})
+def d_analysis(request):
+    form=LoginForm()
+    return render(request,'analysisreport/d_analysis.html',{'form': form})
+def report(request):
+    form=LoginForm()
+    return render(request,'analysisreport/repot.html',{'form': form})
      

@@ -14,7 +14,7 @@ $(document).ready(function() {
                         message:'Username must be atleast 6 character long'
                     },
                         notEmpty: {
-                        message: 'Please provide username'
+                        message: 'Please provide an username'
                     }
                 }
             },
@@ -25,7 +25,7 @@ $(document).ready(function() {
                         message: 'Please provide your email address'
                     },
                     emailAddress: {
-                        message: 'Please provide a valid email address'
+                        message: 'Please provide an valid email address'
                     }
                 }
             },

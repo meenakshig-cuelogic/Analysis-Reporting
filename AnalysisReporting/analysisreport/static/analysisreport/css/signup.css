@@ -50,11 +50,14 @@ img{
     padding: 5px;
     margin:0 0 5px;
     margin-top: 10px;
+    
 }
+
+
 
 a
 {
-	color: #7dc7e6;
+	color: #2196f3;
 }
 
 
@@ -66,8 +69,7 @@ h3
 .input-group-addon {
 	background-color:#7dc7e6;
 }
-.btn-default
-{
+.btn-default{
 	background-color: #3395ff;
 	color: white;
 

@@ -15,5 +15,9 @@ class emailverify(models.Model):
          cur_time = timezone.now()
          return cur_time - datetime.timedelta(days=1) <= self.pub_date <= cur_time
     
-    
+class Document(models.Model):
+	username = models.ForeignKey(User, on_delete=models.CASCADE)
+   	Name = models.CharField(max_length=255, blank=True)
+   	document = models.FileField(upload_to='documents/')
+   	uploaded_at = models.DateTimeField(auto_now_add=True)  
 

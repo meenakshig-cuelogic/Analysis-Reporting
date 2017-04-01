@@ -1,7 +1,11 @@
+
 .navbar-default .navbar-nav>li>a {
     color: #2196f3;
-    
+    margin: 10px;
 }
+
+signup.css:48
+
 
 .nav {
 	margin-left:250px;
@@ -15,4 +19,47 @@
    display: inline-block;
    margin-left: 10px;
    padding: 20px;
+}
+.navbar-default .navbar-nav>.active {
+    text-align: center;
+    border-bottom: 4px solid #2196f3;
+    background-color: white;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  
+    background-color: white;
+}
+.navbar-nav {
+    float: left;
+    margin: 0;
+    margin-left: 250px;
+}
+.container{
+	background-color: #e8f6fc;
+	margin-top: 20px;
+	    margin-top: 60px;
+}
+.content
+{
+	background-color: #2196f3;
+}
+.dashed {
+	border-style: dashed;
+	height: 150px;
+	color: skyblue;
+}
+.inner{
+	margin: 20px;
+	background-color: lightblue;
+	height: 100px;
+	text-align: center;
+}
+p{
+	padding: 40px;
+	color: black;
+	    font-size: 23;
+	text-align: center;
+}
+a{
+	color: white;
 }

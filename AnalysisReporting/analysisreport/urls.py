@@ -29,10 +29,19 @@ urlpatterns = [
 
     url(r'^landpage/login1/analysisreport/import_data/$',views.import_file,name='import'),
 
+    url(r'^landpage/login1/analysisreport/import_data/report/$',views.report,name='report'),
 
-    url(r'^landpage/login1/analysisreport/register$',views.UserFormView.as_view(),name='register'),
+    url(r'^import_file/$',views.import_file,name='import_file'),
+    url(r'^report/$',views.report,name='report'),
+
+    url(r'^c_analysis/$',views.c_analysis,name='c_analysis'),
+
+    url(r'^d_analysis/$',views.d_analysis,name='d_analysis'),
+
+
+    url(r'^landpage/login1/analysisreport/register/$',views.UserFormView.as_view(),name='register'),
         
-    url(r'^landpage/register/analysisreport/register$',views.UserFormView.as_view(),name='register'),
+    url(r'^landpage/register/analysisreport/register/$',views.UserFormView.as_view(),name='register'),
       
 
     url(r'^register/Login/$',views.Login, name='Login'),
