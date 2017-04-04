@@ -36,8 +36,8 @@ signup.css:48
 }
 .container{
 	background-color: #e8f6fc;
-	margin-top: 20px;
-	    margin-top: 60px;
+	
+	    margin-top: 80px;
 }
 .content
 {
@@ -57,7 +57,7 @@ signup.css:48
 p{
 	padding: 40px;
 	color: black;
-	    font-size: 23;
+	    font-size: 23px;
 	text-align: center;
 }
 a{

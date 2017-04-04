@@ -11,7 +11,7 @@ $(document).ready(function() {
                 validators: {
                         stringLength: {
                         min: 6,
-                        message:'Username must be atleast 6 character long'
+                        message:'Username should be unique and at least 6 digit long.'
                     },
                         notEmpty: {
                         message: 'Please provide non empty username'
@@ -25,7 +25,7 @@ $(document).ready(function() {
                         message: 'Please provide nonempty email address'
                     },
                     emailAddress: {
-                        message: 'Please provide a hrlloo valid email address'
+                        message: 'Please provide valid email address'
                     }
                 }
             },
@@ -36,26 +36,26 @@ $(document).ready(function() {
 
             validators:{
                  notEmpty: {
-                        message: 'Please provide password'
+                        //message: 'Please provide password'
                     },
 
                 stringLength: {
                     min: 8,
                     max: 16,
-                    message:'password must be more than 8 character and less than 16 character long'
+                    message:'Please provide minimum 8 characters long alphanumeric password, with minimum one character in uppercase'
                 
             },
 
                 regexp:{    
                     regexp:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-z\d]+$/,
-                    message:"Password must contain atleast 1 number and 1 letter Uppercase"
-            },
+            //         message:"Password must contain atleast 1 number and 1 letter Uppercase"
+             },
             
         
         
             identical:{
                 field:"password_again",
-                message:"Confirm your password below"
+                message:"Password and re-entered passwords are not matching"
                 }
             }
         },
@@ -68,7 +68,7 @@ $(document).ready(function() {
 
                     identical:{
                         field:"password",
-                        message:"The password and retyped password are not same"
+                        message:"Password and re-entered passwords are not matching"
                     }
                 }
             }

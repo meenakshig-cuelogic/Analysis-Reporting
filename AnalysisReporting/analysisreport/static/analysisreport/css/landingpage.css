@@ -21,18 +21,6 @@ navbar navbar-default {
     height: 40px;
 }
 
-
-/*.logo
-{
-     margin-top: 5px;
-     padding-top: 5px;
-     padding-left: 10px;
-     height: 40px;
-
-}
-
-*/
-
 .jumbotron p {
     text-align: center;
     padding: 30px;
@@ -94,12 +82,12 @@ navbar navbar-default {
     height: 50px;
 }
 
-.font_l {
+.font-large {
     padding: 30px;
     font-size: 50px;
 }
 
-.font_m {
+.font-medium {
     text-align: center;
     padding: 30px;
     font-size: 25px;

@@ -1,4 +1,4 @@
-{% load static %} {% csrf_token %}
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -17,6 +17,7 @@
     <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
     <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
     <script src="{% static 'analysisreport/js/validations.js' %}"></script>
+    <script src="{% static 'analysisreport/js/import.js' %}"></script>
     <script src="analysisreport/js/Cookie/jquery.cookie.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/signup.css' %}" />
@@ -34,7 +35,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Username<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{name}}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/analysisreport/landpage">Logout</a></li>
                         </ul>
@@ -55,14 +56,53 @@
         </div>
     </nav>
     <div class="container ">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
         <div class="dashed">
             <section class="inner">
                 <p class="sentence">
                     To import data please <a href=""> upload</a> CSV file or<a href=""> Drag & Drop here</a>
                 </p>
             </section>
+            <form method="POST" id="file-upload-form" enctype="multipart/form-data"> {% csrf_token %} 
+            <input type="file" id="uploadFile" name="uploaded_file">
+                <button type="submit" class="btn btn-primary" id='upload-btn'>Upload</button>
+            
+            </form>
+
+  
+
+ 
+
+       <table class="table">
+    <thead>
+      <tr>
+       
+      </tr>
+    </thead>
+    <tbody>
+    {% for column in main_list %}
+      
+        <td>{{column}}</td>
+    
+    {% endfor %}
+      
+      
+    </tbody>
+  </table> 
+
+
+
+
+
+
+
+
+
+
+
         </div>
-    </div>
 </body>
 
 </html>

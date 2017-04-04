@@ -22,7 +22,6 @@ urlpatterns = [
 
    url(r'^landpage/login1/analysisreport/Login$',views.login1,name='login'),
 
-    
     url(r'^landpage/login1/$',views.login1,name='login'),
 
     url(r'^landpage/register/Login$',views.login1,name='login'),
@@ -32,6 +31,7 @@ urlpatterns = [
     url(r'^landpage/login1/analysisreport/import_data/report/$',views.report,name='report'),
 
     url(r'^import_file/$',views.import_file,name='import_file'),
+    
     url(r'^report/$',views.report,name='report'),
 
     url(r'^c_analysis/$',views.c_analysis,name='c_analysis'),

@@ -13,12 +13,18 @@ from django.views.generic import View
 from analysisreport.forms import *
 from django.core.exceptions import ObjectDoesNotExist
 from django import forms
-from analysisreport.models import emailverify
+from analysisreport.models import *
 from datetime import datetime
 from datetime import datetime, timedelta
 from django.utils import timezone
 import hashlib
 import os
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from analysisreport.csvreader import csv_file_reader
+
 
 class UserFormView(View):
 
@@ -35,8 +41,7 @@ class UserFormView(View):
         return render(request,self.template_name,{'form': form})
 
 
-    def post(self,request):
-        
+    def post(self,request): 
         if request.method =='POST':
             form=self.form_class(request.POST)
             if form.is_valid():
@@ -44,6 +49,7 @@ class UserFormView(View):
                 email=form.cleaned_data['email']
                 password=form.cleaned_data['password']
                 if not (User.objects.filter(username=username).exists() or User.objects.filter(username=username).exists()):
+                    
                     u1=User.objects.create_user(username,email,password)
                     user=authenticate(username=username,password=password)
 
@@ -60,7 +66,7 @@ class UserFormView(View):
                 else:
                     return HttpResponse("failed")
                     
-        messages.warning(request, 'Already registered user please prefer loging in.')
+        messages.warning(request, 'Username is already in use')
         return render(request,self.template_name,{'form': form})
 
 def Login(request):
@@ -85,7 +91,7 @@ def login1(request):
     if request.method == 'GET':
             form = LoginForm()
             if verf_value:
-                messages.success(request, "you have verified your email")
+                messages.success(request, "Your account has been successfully verified, now you can login.")
                 return render(request,"analysisreport/loginpage.html",{'form':form})
             else:
                # messages.success(request, "make sure you have a activated account")
@@ -102,7 +108,7 @@ def login1(request):
 
                     if user.is_active:
                         login(request,user)
-                        return redirect('analysisreport/import_data')
+                        return redirect('/analysisreport/import_file')
                     else:
                         messages.warning(request, "please verify your email")
                 else:
@@ -112,9 +118,9 @@ def login1(request):
                         if user.is_active:
                             messages.warning(request,"User does not exists")
                         else:
-                            messages.warning(request,"Activate your account")
+                            messages.warning(request,"This account is not activated yet, to activate your account click vitrifaction link sent to associated email address.")
                     else:       
-                        messages.warning(request,"Incorrect Credentials")
+                        messages.warning(request,"Username password combination does not match")
                 return render(request,"analysisreport/loginpage.html",{'form':form})
                     
         return render(request,"analysisreport/loginpage.html",{'form':form})   
@@ -136,8 +142,18 @@ def email_verification(request):
     
 
 def import_file(request):
-    form=LoginForm()
-    return render(request,'analysisreport/import_file.html',{'form': form})
+        
+        if request.method == 'POST':
+             
+            if len(request.FILES):
+                uploaded_file_name = handle_uploaded_file(request.FILES['uploaded_file'])                
+                u1=User.objects.filter(username=request.user.username)  
+                main_list=csv_file_reader(uploaded_file_name)
+                return render(request,'analysisreport/import_file.html',{'main_list': main_list})
+        else:
+            form = UploadFileForm()
+        return render(request, 'analysisreport/import_file.html', {'form': form})
+        
 def c_analysis(request):
     form=LoginForm()
     return render(request,'analysisreport/c_analysis.html',{'form': form})
@@ -147,4 +163,9 @@ def d_analysis(request):
 def report(request):
     form=LoginForm()
     return render(request,'analysisreport/repot.html',{'form': form})
-     
+
+def handle_uploaded_file(f):
+    file_path = os.path.join(settings.MEDIA_ROOT, f.name)
+    new_file = open(file_path, 'wb+')
+    new_file.write(f.read())
+    return file_path
