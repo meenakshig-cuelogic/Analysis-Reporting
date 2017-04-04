@@ -18,12 +18,6 @@ EMAIL_HOST_USER='meenakshi.ghamande@cuelogic.com'
 EMAIL_HOST_PASSWORD='Cuelogic'
 Email_PORT=587
 
-
-
-
-
-
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,7 +31,7 @@ SECRET_KEY = '4%69qd__ic9n6dkvpnypplrtj+amtxsy&jy%#$a9rp!sbh2-tw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["172.21.32.80"]
+
 
 
 # Application definition

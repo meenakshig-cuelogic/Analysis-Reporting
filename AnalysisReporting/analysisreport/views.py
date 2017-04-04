@@ -157,3 +157,4 @@ def email_verification(request):
     username.is_active=True
     messages.success(request, "you have verified your email")
     return render(request,"analysisreport/loginpage.html")
+    

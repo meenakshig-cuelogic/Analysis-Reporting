@@ -17,6 +17,3 @@ class Setup_Class(TestCase):
     def user_check(self):
     	username="meenakshi"
     	
-
- 
-

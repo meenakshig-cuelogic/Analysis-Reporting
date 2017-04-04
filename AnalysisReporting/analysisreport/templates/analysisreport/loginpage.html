@@ -1,13 +1,10 @@
- 
-
-{% load static %}
-{% csrf_token %}
+ {% load static %} {% csrf_token %}
 <!DOCTYPE html>
 <html>
-<head>
-	<title>login</title>
 
-	<meta charset="utf-8">
+<head>
+    <title>login</title>
+    <meta charset="utf-8">
     <title> Signup </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,97 +14,67 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css' %}" />
-    
-     <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
-     <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
-
- <script src="{% static 'analysisreport/js/validations.js' %}"></script>
-
-
-<script src="analysisreport/js/Cookie/jquery.cookie.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-   
-
-
-
+    <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
+    <script src="{% static 'analysisreport/js/validations.js' %}"></script>
+    <script src="analysisreport/js/Cookie/jquery.cookie.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
+
 <body>
-
-
- <form method="POST">{% csrf_token %}
-
- <header style="  background-color: grey; padding: 10px;">
-  <h1 style="height: 20px; margin-top: -2px;  ">Analysis & Reporting</h1>      
-  </header>
-
-
-
- <div class="container" style="text-align:center;background-color: lightgrey; "> 
-
- <h3 style="text-align:center;"> Login </h3>
- 
-<br>
-<br>
-<br>
-<br>
-{% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-      <li style="background-color: lightgrey;" class="{{ message.tags }}">{{ message }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
-
- <div class=" form-group col-sm-10  col-sm-offset-4" style="width: 400px">
-      <div class="input-group col-sm-10   " style="width: 400px">
-    <span class="input-group-addon col-sm-push-4"><i class="glyphicon glyphicon-user"></i></span>
-     {{form.username}}
-   </div>
-   </div>
-<br>
-<br>
-   
-      <div class=" form-group col-sm-8  col-sm-offset-4" >
-      <div class="input-group col-sm-8   " >
-    <span class="input-group-addon col-lg-offset-4"><i class="glyphicon glyphicon-lock"></i></span>
-     {{form.password}}
-   </div>
-   </div>
-<br>
-<br>
-
-<div class="row">
-            <div class="col-sm-10">
-                 <div class="checkbox">
-        			 
-          				<input type="checkbox"/>Remember me
-					 
-      			</div>
+    <form method="POST">{% csrf_token %}
+        <header style="  background-color: grey; padding: 10px;">
+            <h1 style="height: 20px; margin-top: -2px;  ">Analysis & Reporting</h1>
+        </header>
+        <div class="container" style="text-align:center;background-color: lightgrey; ">
+            <h3 style="text-align:center;"> Login </h3>
+            <br>
+            <br>
+            <br>
+            <br> {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li style="background-color: lightgrey;" class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div class=" form-group col-sm-10  col-sm-offset-4" style="width: 400px">
+                <div class="input-group col-sm-10   " style="width: 400px">
+                    <span class="input-group-addon col-sm-push-4"><i class="glyphicon glyphicon-user"></i></span> {{form.username}}
+                </div>
             </div>
-            <div class="col-sm-2 col-sm-pull-3">
-                <a href="Forgotpassword">Forgot Password? </a>  
-                 
+            <br>
+            <br>
+            <div class=" form-group col-sm-8  col-sm-offset-4">
+                <div class="input-group col-sm-8   ">
+                    <span class="input-group-addon col-lg-offset-4"><i class="glyphicon glyphicon-lock"></i></span> {{form.password}}
+                </div>
             </div>
-    </div>
-<br>
-<br>
- <div class="row">
-            <div class="col-sm-9">
-                <input value="Login" type="submit" style="background-color: grey;" class="btn btn-default" id="login" />
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <input type="checkbox" />Remember me
+                    </div>
+                </div>
+                <div class="col-sm-2 col-sm-pull-3">
+                    <a href="Forgotpassword">Forgot Password? </a>
+                </div>
             </div>
-            <div class="col-sm-3 col-sm-pull-2">
-
-  
-
-                <p>New User? <a href="register">create an account </a></p>
-             </div>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm-9">
+                    <input value="Login" type="submit" style="background-color: grey;" class="btn btn-default" id="login" />
+                </div>
+                <div class="col-sm-3 col-sm-pull-2">
+                    <p>New User? <a href="register">create an account </a></p>
+                </div>
+            </div>
         </div>
-
-  </DIV>
-</div>
-</form>
-
-
+        </div>
+    </form>
 </body>
+
 </html>

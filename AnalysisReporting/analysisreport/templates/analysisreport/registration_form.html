@@ -1,144 +1,74 @@
-
-{%load static%}
-
-<html>  
-
+ {%load static%}
+<html>
 
 <head>
     <meta charset="utf-8">
     <title> Signup </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
-    
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" />
-    
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css' %}" />
-    
     <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
-     
-     <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
-     <script src="{% static 'analysisreport/js/bootstrapvalidations.js' %}"></script>
-      <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
+    <script src="{% static 'analysisreport/js/bootstrapvalidations.js' %}"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 </head>
 
 <body>
-<form  id="myform" action="" method="POST">
-{% csrf_token %}
-<header style="height: 40px; background-color: lightgrey; padding: 10px;">
-  <!-- <h3 style="height: 10px; margin-top: 1px;  ">Analysis & Reporting</h3>       -->
-    Analysis & Reporting 
-  
-  </header>
- 
- <h3 style="text-align:center; padding: 20px;">Signup</h3>
- <br>
- <br>
-  <div class="form-group col-sm-offset-4"  >
-    <!-- <label for="Username">Username</label><br>
+    <form id="myform" action="" method="POST">
+        {% csrf_token %}
+        <header style="height: 40px; background-color: lightgrey; padding: 10px;">
+            <!-- <h3 style="height: 10px; margin-top: 1px;  ">Analysis & Reporting</h3>       -->
+            Analysis & Reporting
+        </header>
+        <h3 style="text-align:center; padding: 20px;">Signup</h3>
+        <br>
+        <br>
+        <div class="form-group col-sm-offset-4">
+            <!-- <label for="Username">Username</label><br>
     {{form.username}}  -->
-
-    <div class="input-group col-sm-10   " style="width: 400px">
-    <span class="input-group-addon col-sm-push-4"><i class="glyphicon glyphicon-user"></i></span>
-     {{form.username}}
-   </div>
-
-
-    </div>
-    
-<br>
-
-  <div class="form-group col-sm-offset-4"  >
-    <div class="input-group col-sm-10   " style=" ">
-    <span class="input-group-addon col-sm-push-4"><i class="glyphicon glyphicon-envelope"></i></span>
-     {{form.email}}
-   </div>
-
-     </div>
- <br>  
-<div class="form-group col-sm-offset-4"  >
-     <div class="input-group col-sm-10   "  ">
-    <span class="input-group-addon col-sm-push-4"><i class="glyphicon glyphicon-lock"></i></span>
+            <div class="input-group col-sm-10   " style="width: 400px">
+                <span class="input-group-addon col-sm-push-4"><i class="glyphicon glyphicon-user"></i></span> {{form.username}}
+            </div>
+        </div>
+        <br>
+        <div class="form-group col-sm-offset-4">
+            <div class="input-group col-sm-10   " style=" ">
+                <span class="input-group-addon col-sm-push-4"><i class="glyphicon glyphicon-envelope"></i></span> {{form.email}}
+            </div>
+        </div>
+        <br>
+        <div class="form-group col-sm-offset-4">
+            <div class="input-group col-sm-10   " ">
+    <span class="input-group-addon col-sm-push-4 "><i class="glyphicon glyphicon-lock "></i></span>
      {{form.password}}
    </div>
 
      </div>
 <br>
 
-<div class="form-group col-sm-offset-4"  >
-     <div class="input-group col-sm-10   "  >
-    <span class="input-group-addon col-sm-push-4"><i class="glyphicon glyphicon-lock"></i></span>
+<div class="form-group col-sm-offset-4 "  >
+     <div class="input-group col-sm-10 "  >
+    <span class="input-group-addon col-sm-push-4 "><i class="glyphicon glyphicon-lock "></i></span>
      {{form.password_again}}
    </div>
 
      </div>
 
 <br>
-
-  <!-- <button  type="submit" class="btn btn-default col-sm-offset-4">Submit
-  </button>
-
-  <div class=" col-sm-offset-4 ">
-                <p>Already a member? <a href="Login"> Login </a> here</p>
-                 
-            </div> -->
- 
-
-
-
-
-
-
-
-
-
-   <!--  <div class="container" style="text-align:center; ">
-        <h3 style="text-align:center;">Signup</h3>
-               
-        <div class=" form-group col-sm-offset-4"  >
-      <div class="input-group"  >
-    <span class="input-group-addon col-sm-pull-90"><i class="glyphicon glyphicon-user"></i></span>
-     {{form.username}}
-   </div>
-   </div>
-<br>
-   <div class=" form-group col-sm-offset-4">
-      <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-     {{form.email}}
-   </div>
-   </div>
-
-   <br>
-   <div class=" form-group  col-sm-offset-4"  >
-      <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-     {{form.password}}
-    </div>
-   </div>
-
-
-    <br>
-   <div class=" form-group col-sm-offset-4" style="width: 400px">
-      <div class="input-group" style="width: 400px">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-     {{form.password_again}}
-   </div>
- -->
 <br>
 <br>
 
 
    {% if messages %}
-  <ul class="messages">
+  <ul class="messages ">
     {% for message in messages %}
-      <li style="background-color: lightgrey;" class="{{ message.tags }}">{{ message }}</li>
+      <li style="background-color: lightgrey; " class="{{ message.tags }} ">{{ message }}</li>
     {% endfor %}
   </ul>
 {% endif %}
@@ -149,9 +79,9 @@
       
          
          
-        <div class="row">
-            <div class="  col-sm-offset-4"  >
-                <input  value="Register" type="submit" class="btn btn-default" id="Register" style="background-color: lightgrey";>
+        <div class="row ">
+            <div class=" col-sm-offset-4 "  >
+                <input  value="Register " type="submit " class="btn btn-default " id="Register " style="background-color: lightgrey ";>
              
   
             
@@ -169,28 +99,28 @@
 <!--
 <script>
 $(document).ready(function() {
-$jQuery.validator.addMethod("e_mail", function(value, element)
+$jQuery.validator.addMethod("e_mail ", function(value, element)
 {
 return this.optional(element) || /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/i.test(value);
-}, "Please enter a valid email address.");
+}, "Please enter a valid email address. ");
 
-$jQuery.validator.addMethod("Username",function(value,element)
+$jQuery.validator.addMethod("Username ",function(value,element)
 {
 return this.optional(element) || /^[a-zA-Z0-9._-]{8,18}$/i.test(value);
-},"Username are 3-15 characters");
+},"Username are 3-15 characters ");
 
-$jQuery.validator.addMethod("password1",function(value,element)
+$jQuery.validator.addMethod("password1 ",function(value,element)
 {
 return this.optional(element) || /^[A-Za-z0-9!@#$%^&*()_]{8,8}$/i.test(value);
-},"Passwords are 8 characters");
+},"Passwords are 8 characters ");
 
 // Validate signup form
-$("#myform").validate({
+$("#myform ").validate({
 rules: {
-e_mail: "required email",
-Username: "required Username",
-password1: "required password",
-password_again:"required password_again"
+e_mail: "required email ",
+Username: "required Username ",
+password1: "required password ",
+password_again:"required password_again "
 },
 });
 });
