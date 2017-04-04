@@ -17,7 +17,6 @@ class Test1(unittest.TestCase):
 		self.assertFalse(len(string)<6)
 	
 
-
 	def test_password_length(self):
 		pass1=os.environ.get('pass1')
 		self.assertTrue(len(pass1)>=8 )

@@ -29,16 +29,7 @@ navbar navbar-default
      height: 40px;
 
 }
-/*.logo
-{
-     margin-top: 5px;
-     padding-top: 5px;
-     padding-left: 10px;
-     height: 40px;
-
-}
-
-*/.jumbotron p 
+.jumbotron p 
     {
         text-align: center;
         padding: 30px;

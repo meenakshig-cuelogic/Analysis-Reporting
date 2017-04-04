@@ -27,5 +27,3 @@ class LoginForm(forms.Form):
     username = forms.CharField(label='Username',widget=forms.TextInput(attrs={'size':'50','placeholder': 'Username','class':'form-control'}))
     password = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'size':'50','placeholder': 'Password','class':'form-control'}))
     
-
-     

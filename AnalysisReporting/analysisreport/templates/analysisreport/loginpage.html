@@ -1,11 +1,10 @@
-{% load static %}
-{% csrf_token %}
+{% load static %} {% csrf_token %}
 <!DOCTYPE html>
 <html>
-<head>
-  <title>login</title>
 
-  <meta charset="utf-8">
+<head>
+    <title>login</title>
+    <meta charset="utf-8">
     <title> Signup </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -14,122 +13,75 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" />
-
-    
-     <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
-     <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
- <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
- <script src="{% static 'analysisreport/js/validations.js' %}"></script>
-
-
-<script src="analysisreport/js/Cookie/jquery.cookie.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-   
- <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/signup.css' %}" />
+    <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
+    <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
+    <script src="{% static 'analysisreport/js/validations.js' %}"></script>
+    <script src="analysisreport/js/Cookie/jquery.cookie.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/signup.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-
-
 </head>
+
 <body>
-
- 
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-     <a href="analysisreport/landpage">
-     <img class="logo" alt="Brand" src="/static/analysisreport/media/logo.png">
-     </a>
-
-
-    
-    </div>
-
-    
-    <div class="collapse navbar-collapse" >
-       
-      <!-- not able to apply green color and alinment is not coming right -->
-      <ul class="nav navbar-nav navbar-right">
-        <li class="links"><a href="/analysisreport/landpage">HOME</a></li>
-        </ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-<section>
-<div class="container">
-{% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-{% endfor %}
-<h3>LOGIN</h3>
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
-   <form method="POST" action="">{% csrf_token %}
-  <div class="form-group">
-     
-
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        {{form.username}}
-   </div>
-
-
-</div>
-
-  <div class="form-group">
-    <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-   {{form.password}}
-  
-   </div>
-
-
-</div>
-
- 
-     
-<div class="form-group">
-<div class="checkbox">
-    <label>
-      <input type="checkbox">
-      <a href="" class="">Remember Me</a> 
-      
-    </label>
-    <span><a class="pull-right" href="">Forgot Password</a></span>
-  </div>
-  
-  </div>
-
-<div class="form-group control-group">
-<button type="submit" class="btn btn-default form-control" >Login
-  </button>
- </div>
- <div class="form-group text-center">
-                <p>New user? <a href="analysisreport/register">Create an account</a></p>
-                 
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a href="analysisreport/landpage">
+                    <img class="logo" alt="Brand" src="/static/analysisreport/media/logo.png">
+                </a>
             </div>
-
-
-            <!-- {% if messages %}
-   <ul class="messages">
-    {% for message in messages %}
-      <li style="background-color: lightgrey;" class="{{ message.tags }}">{{ message }}</li>
-    {% endfor %}
-  </ul> 
-
-{% endif %} -->
-
-
- 
-  </form>
-</div>
-
-  </div>
-  </div>
-  </section>
-  
-
+            <div class="collapse navbar-collapse">
+                <!-- not able to apply green color and alinment is not coming right -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="links"><a href="/analysisreport/landpage">HOME</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <section>
+        <div class="container">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            <h3>LOGIN</h3>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <form method="POST" action="">{% csrf_token %}
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> {{form.username}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> {{form.password}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                    <a href="" class="">Remember Me</a>
+                                </label>
+                                <span><a class="pull-right" href="">Forgot Password</a></span>
+                            </div>
+                        </div>
+                        <div class="form-group control-group">
+                            <button type="submit" class="btn btn-default form-control">Login
+                            </button>
+                        </div>
+                        <div class="form-group text-center">
+                            <p>New user? <a href="analysisreport/register">Create an account</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>
