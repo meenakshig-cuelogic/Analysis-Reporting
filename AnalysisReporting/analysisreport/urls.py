@@ -9,7 +9,7 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
 
-    #url(r'^register/$',views.register,name='register'),
+    
     url(r'^landpage/$',views.landpage,name='landpage'),
     
     url(r'^register/$',views.UserFormView.as_view(),name='register'),

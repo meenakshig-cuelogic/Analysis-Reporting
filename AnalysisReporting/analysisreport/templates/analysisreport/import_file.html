@@ -74,24 +74,35 @@
   
 
  
+  
 
-       <table class="table">
+<table class="table">
+
     <thead>
-      <tr>
-       
-      </tr>
+        <tr>
+        {% for h in csv_headers %}
+            <td>
+                {{h}}
+            </td>
+        {% endfor %}
+        </tr>
     </thead>
+
+
     <tbody>
-    {% for column in main_list %}
-      
-        <td>{{column}}</td>
-    
+      {% for column in outer_list %}
+      <tr>
+        
+    {% for i in column %}
+    <td>
+     {{i}}
+     </td>
     {% endfor %}
-      
+    </tr>
       
     </tbody>
-  </table> 
-
+    {% endfor %}
+  </table>
 
 
 

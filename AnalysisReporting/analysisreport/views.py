@@ -23,7 +23,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from analysisreport.csvreader import csv_file_reader
+from analysisreport.csvreader import *
 
 
 class UserFormView(View):
@@ -144,12 +144,16 @@ def email_verification(request):
 def import_file(request):
         
         if request.method == 'POST':
-             
+            outer_list=[]
             if len(request.FILES):
                 uploaded_file_name = handle_uploaded_file(request.FILES['uploaded_file'])                
-                u1=User.objects.filter(username=request.user.username)  
+                csv_headers=csv_file_header(uploaded_file_name)  
                 main_list=csv_file_reader(uploaded_file_name)
-                return render(request,'analysisreport/import_file.html',{'main_list': main_list})
+                for i in range(len(main_list)):
+                    outer_list.append(main_list[i])
+                u1=User.objects.filter(username=request.user.username)
+                e1=u1.Document_set()
+                return render(request,'analysisreport/import_file.html',{'csv_headers':csv_headers,'outer_list': outer_list})
         else:
             form = UploadFileForm()
         return render(request, 'analysisreport/import_file.html', {'form': form})
@@ -169,3 +173,4 @@ def handle_uploaded_file(f):
     new_file = open(file_path, 'wb+')
     new_file.write(f.read())
     return file_path
+    

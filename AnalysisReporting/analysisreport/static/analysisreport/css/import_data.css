@@ -1,65 +1,80 @@
-
 .navbar-default .navbar-nav>li>a {
     color: #2196f3;
     margin: 10px;
 }
 
-signup.css:48
-
-
-.nav {
-	margin-left:250px;
+signup.css:48 .nav {
+    margin-left: 250px;
 }
+
 .nav ul {
-   list-style: none;
-   text-align: center;
+    list-style: none;
+    text-align: center;
 }
 
 .nav ul li {
-   display: inline-block;
-   margin-left: 10px;
-   padding: 20px;
+    display: inline-block;
+    margin-left: 10px;
+    padding: 20px;
 }
+
 .navbar-default .navbar-nav>.active {
     text-align: center;
     border-bottom: 4px solid #2196f3;
     background-color: white;
 }
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-  
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
     background-color: white;
 }
+
 .navbar-nav {
     float: left;
     margin: 0;
     margin-left: 250px;
 }
-.container{
-	background-color: #e8f6fc;
-	
-	    margin-top: 80px;
+
+.container {
+    background-color: #e8f6fc;
+    margin-top: 80px;
 }
-.content
-{
-	background-color: #2196f3;
+
+.content {
+    background-color: #2196f3;
 }
+
 .dashed {
-	border-style: dashed;
-	height: 150px;
-	color: skyblue;
+    border-style: dashed;
+    height: 150px;
+    color: skyblue;
 }
-.inner{
-	margin: 20px;
-	background-color: lightblue;
-	height: 100px;
-	text-align: center;
+
+.inner {
+    margin: 20px;
+    background-color: lightblue;
+    height: 100px;
+    text-align: center;
 }
-p{
-	padding: 40px;
-	color: black;
-	    font-size: 23px;
-	text-align: center;
+
+p {
+    padding: 40px;
+    color: black;
+    font-size: 23px;
+    text-align: center;
 }
-a{
-	color: white;
+
+a {
+    color: white;
+}
+
+thead {
+    color: black;
+    background-color: skyblue;
+}
+
+tbody {
+    color: black;
+    background-color: white;
 }
