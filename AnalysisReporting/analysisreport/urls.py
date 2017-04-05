@@ -41,10 +41,4 @@ urlpatterns = [
 	url(r'^register/login/$', auth_views.login, {'template_name': 'analysisreport/loginpage.html'}, name='login'),
  	
  	url(r'^email_verification/login1/$',views.login1,name='login1'),
-	
-
-
 	]
-
-
-  
