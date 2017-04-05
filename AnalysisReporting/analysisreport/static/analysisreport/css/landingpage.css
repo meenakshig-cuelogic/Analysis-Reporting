@@ -13,11 +13,7 @@ body
         text-rendering: optimizeLegibility;
        
     }
-
-
- 
-
-    .navbar {
+ .navbar {
     position: relative;
     min-height: 0px;
     margin-bottom: 0px;
@@ -41,18 +37,12 @@ body
     position: relative;
     z-index: 1;
 }
-
-
-
-
    .btn
    {
      height: 50px;
      width: 240px;
       
    } 
-
-
     .buttton_style
     {
         padding:10px;
