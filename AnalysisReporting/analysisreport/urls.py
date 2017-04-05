@@ -3,10 +3,6 @@ from analysisreport import views
 from . import forms
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import TemplateView
-
-
-
-
 urlpatterns = [
 
     #url(r'^register/$',views.register,name='register'),
