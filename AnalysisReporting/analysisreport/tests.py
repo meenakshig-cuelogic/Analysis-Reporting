@@ -31,7 +31,3 @@ class Test1(unittest.TestCase):
 		pass1=os.environ.get('pass1')
 		pass2=os.environ.get('pass2')
 		self.assertEqual(pass1,pass2)
-
-	
-
-	
