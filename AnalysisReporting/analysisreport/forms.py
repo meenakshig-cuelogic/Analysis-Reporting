@@ -8,9 +8,6 @@ from django.views.generic import View
 from django.forms import ModelForm
 from django import forms
 
- 
-
-
 class UserForm(forms.ModelForm):
 	username=forms.CharField(label='Username',widget=forms.TextInput(attrs={'size':'50','placeholder':'Username'}))
 	email= forms.EmailField(label='Email Address',widget=forms.TextInput(attrs={'size':'50','placeholder':'email'}))
