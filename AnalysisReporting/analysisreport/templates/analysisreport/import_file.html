@@ -16,13 +16,17 @@
     <script src="{% static 'analysisreport/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
     <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
-    <script src="{% static 'analysisreport/js/validations.js' %}"></script>
+    <!-- <script src="{% static 'analysisreport/js/validations.js' %}"></script> -->
     <script src="{% static 'analysisreport/js/import.js' %}"></script>
+    <script src="{% static 'analysisreport/js/importvalidations.js' %}"></script>
     <!-- <script src="analysisreport/js/Cookie/jquery.cookie.js"></script>
-     --><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/signup.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/import_data.css'%}" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -59,65 +63,67 @@
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }}">{{ message }}</div>
         {% endfor %}
+        <div id = "alert_placeholder"></div>
         <div class="dashed">
             <section class="inner">
-                <p class="sentence">
-                    To import data please <a href=""> upload</a> CSV file or<a href=""> Drag & Drop here</a>
-                </p>
-            </section>
-            <form method="POST" id="file-upload-form" enctype="multipart/form-data" action="/analysisreport/get_file_data/"> 
-            {% csrf_token %} 
-            <input type="file" id="uploadFile" name="uploaded_file">
+                <form method="POST" id="file-upload-form" enctype="multipart/form-data" action="/analysisreport/get_file_data/">
+                {% csrf_token %}
+                <input type="file" id="uploadFile" name="uploaded_file">
+                <label for="uploadFile">To import data please <span>upload</span> CSV file or <span>Drag & Drop</span></label>
+                <div data-alerts="alerts" data-titles='{"warning": "<em>Warning!</em>", "error": "<em>Error!</em>"}' data-ids="myid" data-fade="3000"></div>
                 <button type="submit" class="btn btn-primary" id='upload-btn'>Upload</button>
-            
             </form>
-
-  
-{% if upload_success%}
- 
- <form method="POST" id="file-save-form" enctype="multipart/form-data" action="/analysisreport/save_file/">{% csrf_token %} 
-  <input type="text" name="file_name">
-  <button type="submit" class="btn btn-primary" id='save-btn'>Save</button>
-  </form>     
-
-<table class="table">
-
-    <thead>
-        <tr>
-        {% for h in csv_headers %}
-            <td>
-                {{h}}
-            </td>
-        {% endfor %}
-        </tr>
-    </thead>
+            </section>
+        </div>    
 
 
-    <tbody>
-      {% for column in outer_list %}
-      <tr>
+            {%if upload_success%}
+            <div class="container-fluid">
+            <form method="POST" id="file-save-form" enctype="multipart/form-data" action="/analysisreport/save_file/">{% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span> 
+                        <input type="text" name="userfilename" id="userfilename"/>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <button type="submit" class="btn btn-primary" id='save-btn'>Save</button>
+                </div>
+                </div>
+            </form>
+            </div>
+            
+            <div class="record-table">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% for h in csv_headers %}
+                        <td>
+                            {{h}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for column in outer_list %}
+                    <tr>
+                        {% for i in column %}
+                        <td>
+                            {{i}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+            {% endif %}
+
+            </div>
         
-    {% for i in column %}
-    <td>
-     {{i}}
-     </td>
-    {% endfor %}
-    </tr>
-      
-    </tbody>
-    {% endfor %}
-  </table>
-
-
-
-
-
-
-
-
-
-{% endif %}
-        </div>
 </body>
 
 </html>

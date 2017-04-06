@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
-from django import forms
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
-from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login
+from django.shortcuts import render,redirect
+from django.http import Http404
 from django.views.generic import View
 from django.forms import ModelForm
 from django import forms
+from django.template.defaultfilters import filesizeformat
 
  
 
@@ -29,3 +29,5 @@ class LoginForm(forms.Form):
 
 class UploadFileForm(forms.Form):
     uploaded_file = forms.FileField()
+    
+     

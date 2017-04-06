@@ -146,7 +146,9 @@ def email_verification(request):
 
 def import_file(request):
     form = UploadFileForm()
-    return render(request, 'analysisreport/import_file.html', {'upload_success':False, 'form': form})
+
+
+    return render(request,'analysisreport/import_file.html', {'upload_success':False, 'form': form})
 
 def get_file_data(request):
     # import pdb 

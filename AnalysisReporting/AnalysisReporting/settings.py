@@ -36,10 +36,10 @@ SECRET_KEY = '4%69qd__ic9n6dkvpnypplrtj+amtxsy&jy%#$a9rp!sbh2-tw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+CONTENT_TYPES = ['FILE']
 ALLOWED_HOSTS = ["172.21.32.80"]
 HOST = "172.21.32.80:8000"
-
+MAX_UPLOAD_SIZE = "10485760"
 # Application definition
 
 INSTALLED_APPS = [
