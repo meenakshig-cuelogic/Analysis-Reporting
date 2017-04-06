@@ -1,4 +1,10 @@
 import uuid
+import hashlib
+import os
+import json
+from datetime import datetime
+from datetime import datetime, timedelta
+
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -10,21 +16,19 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login 
 from django.contrib.auth.views import login 
 from django.views.generic import View
-from analysisreport.forms import *
 from django.core.exceptions import ObjectDoesNotExist
 from django import forms
-from analysisreport.models import *
-from datetime import datetime
-from datetime import datetime, timedelta
 from django.utils import timezone
-import hashlib
-import os
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from analysisreport.csvreader import *
 
+from analysisreport.forms import *
+from analysisreport.csvreader import *
+from analysisreport.models import *
+
+from django.http import Http404
 
 class UserFormView(View):
 
@@ -94,8 +98,7 @@ def login1(request):
                 messages.success(request, "Your account has been successfully verified, now you can login.")
                 return render(request,"analysisreport/loginpage.html",{'form':form})
             else:
-               # messages.success(request, "make sure you have a activated account")
-                return render(request,"analysisreport/loginpage.html",{'form':form})
+               return render(request,"analysisreport/loginpage.html",{'form':form})
    
     if request.method == 'POST':
         form = LoginForm(request.POST) 
@@ -142,22 +145,71 @@ def email_verification(request):
     
 
 def import_file(request):
+    form = UploadFileForm()
+    return render(request, 'analysisreport/import_file.html', {'upload_success':False, 'form': form})
+
+def get_file_data(request):
+    # import pdb 
+    # pdb.set_trace()
+    
+    username1=request.user.username
+    outer_list=[]
+    csv_headers = []
+    if request.method == "POST":
+        # print request.body
         
-        if request.method == 'POST':
-            outer_list=[]
-            if len(request.FILES):
-                uploaded_file_name = handle_uploaded_file(request.FILES['uploaded_file'])                
-                csv_headers=csv_file_header(uploaded_file_name)  
-                main_list=csv_file_reader(uploaded_file_name)
-                for i in range(len(main_list)):
-                    outer_list.append(main_list[i])
-                u1=User.objects.filter(username=request.user.username)
-                e1=u1.Document_set()
-                return render(request,'analysisreport/import_file.html',{'csv_headers':csv_headers,'outer_list': outer_list})
+        if len(request.FILES):
+            
+            uploaded_file_name = handle_uploaded_file(request.FILES['uploaded_file'])
+            csv_headers=csv_file_header(uploaded_file_name)  
+            main_list=csv_file_reader(uploaded_file_name)
+            saving_list=csv_header_content(uploaded_file_name)
+            for i in range(len(main_list)):
+                outer_list.append(main_list[i])
+            
+            request.session['form_data'] = saving_list
+            if(uploaded_file_name):
+                messages.success(request,"File has been uploaded successfully")        
+    
+
+    return render(request, 'analysisreport/import_file.html',{'outer_list':outer_list, 'csv_headers':csv_headers, 'upload_success':True})
+
+
+# def import_file(request):
+        
+#         if request.method == 'POST':
+#             outer_list=[]
+#             if len(request.FILES):
+#                 uploaded_file_name = handle_uploaded_file(request.FILES['uploaded_file'])                
+#                 csv_headers=csv_file_header(uploaded_file_name)  
+#                 main_list=csv_file_reader(uploaded_file_name)
+#                 for i in range(len(main_list)):
+#                     outer_list.append(main_list[i])
+                
+#                 return render(request,'analysisreport/import_file.html',{'csv_headers':csv_headers,'outer_list': outer_list})
+#         else:
+#             form = UploadFileForm()
+#         return render(request, 'analysisreport/import_file.html', {'form': form})
+
+
+
+def save_file(request):
+    if request.method == 'POST':
+        print request.session
+        user=User.objects.get(username=request.user.username) 
+        user_id=request.user.id
+        filename=request.POST['file_name']
+        file_data = request.session['form_data']
+        u1=Document(username=user,docfile=filename,file_data=file_data)
+        if(filename):
+            u1.save()
+            messages.success(request,"File has been saved successfully")
         else:
-            form = UploadFileForm()
-        return render(request, 'analysisreport/import_file.html', {'form': form})
-        
+            messages.warning(request,"Filename cant be empty")    
+
+    return render(request,'analysisreport/import_file.html',{'filename':filename,'user_id':user_id,'file_data':file_data})
+
+
 def c_analysis(request):
     form=LoginForm()
     return render(request,'analysisreport/c_analysis.html',{'form': form})
@@ -173,4 +225,3 @@ def handle_uploaded_file(f):
     new_file = open(file_path, 'wb+')
     new_file.write(f.read())
     return file_path
-    

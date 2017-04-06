@@ -17,4 +17,5 @@ class emailverify(models.Model):
     
 class Document(models.Model):
 	username = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-	docfile = models.FileField(default="",upload_to='media/')
+	docfile = models.FileField(default=None,upload_to='media/')
+	file_data = models.TextField(default=None)

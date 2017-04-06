@@ -18,8 +18,8 @@
     <script src="{% static 'analysisreport/js/jquery.validate.js' %}"></script>
     <script src="{% static 'analysisreport/js/validations.js' %}"></script>
     <script src="{% static 'analysisreport/js/import.js' %}"></script>
-    <script src="analysisreport/js/Cookie/jquery.cookie.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- <script src="analysisreport/js/Cookie/jquery.cookie.js"></script>
+     --><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/signup.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'analysisreport/css/import_data.css'%}" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{name}}<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{username1}}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/analysisreport/landpage">Logout</a></li>
                         </ul>
@@ -65,16 +65,20 @@
                     To import data please <a href=""> upload</a> CSV file or<a href=""> Drag & Drop here</a>
                 </p>
             </section>
-            <form method="POST" id="file-upload-form" enctype="multipart/form-data"> {% csrf_token %} 
+            <form method="POST" id="file-upload-form" enctype="multipart/form-data" action="/analysisreport/get_file_data/"> 
+            {% csrf_token %} 
             <input type="file" id="uploadFile" name="uploaded_file">
                 <button type="submit" class="btn btn-primary" id='upload-btn'>Upload</button>
             
             </form>
 
   
-
+{% if upload_success%}
  
-  
+ <form method="POST" id="file-save-form" enctype="multipart/form-data" action="/analysisreport/save_file/">{% csrf_token %} 
+  <input type="text" name="file_name">
+  <button type="submit" class="btn btn-primary" id='save-btn'>Save</button>
+  </form>     
 
 <table class="table">
 
@@ -112,7 +116,7 @@
 
 
 
-
+{% endif %}
         </div>
 </body>
 

@@ -8,8 +8,6 @@ from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
-
-    
     url(r'^landpage/$',views.landpage,name='landpage'),
     
     url(r'^register/$',views.UserFormView.as_view(),name='register'),
@@ -26,12 +24,20 @@ urlpatterns = [
 
     url(r'^landpage/register/Login$',views.login1,name='login'),
 
-    url(r'^landpage/login1/analysisreport/import_data/$',views.import_file,name='import'),
+    url(r'^landpage/login1/analysisreport/import_file/$',views.import_file,name='import'),
+
+    url(r'^landpage/login1/analysisreport/import_data/save_file/$',views.import_file,name='save'),
+
+    url(r'^save_file/$',views.save_file,name='save'),
 
     url(r'^landpage/login1/analysisreport/import_data/report/$',views.report,name='report'),
 
     url(r'^import_file/$',views.import_file,name='import_file'),
-    
+
+    url(r'^get_file_data/$',views.get_file_data,name='get_file_data'),
+
+    url(r'^save_file/$',views.save_file,name='save_file'),
+
     url(r'^report/$',views.report,name='report'),
 
     url(r'^c_analysis/$',views.c_analysis,name='c_analysis'),
