@@ -1,42 +1,57 @@
 
-from django.test import TestCase
+
 import unittest
 import os
+
+from django.test import TestCase,Client
 from django.core.mail import send_mail
-import re
 from django.contrib.auth.models import User
-from analysisreport.forms import *
+from django.core.urlresolvers import reverse
+from django.test import RequestFactory
 
-# Create your tests here.
+from . import views
+from .models import *
+from .forms import *
 
-class Test1(unittest.TestCase):
+
+class Setup_Class(TestCase):
+
+    def setUp(self):
+        self.user = User.objects.create( username="meenakshi",email="user@mp.com", password="user")
+
+class User_Form_Test(TestCase):
+
+    
+	def create_whatever(self):
+		user=User.objects.create(username="meenakshi",email="mghamande94@gmail.com",password="As123456",password_again="As123456")
+		return user
+		
+	def test_whatever_creation(self):
+		w = self.create_whatever()
+		self.assertTrue(isinstance(w,))
+
+	def test_valid_form(self):
+		data = {'username': 'Abcd1234','email':'abc@gmail.com','password': 'As123456','password1':'As123456'}
+		form = UserForm(data=data)
+		self.assertTrue(form.is_valid())
+
+	def test_invalid_form(self):
+		w =User.objects.create(username='Mee', password='0')
+		data = {'username': w.username, 'password': w.password,}
+		form = UserForm(data=data)
+		self.assertFalse(form.is_valid())
 	
-	def test_username_length(self):
-		string=os.environ.get('user')
-		self.assertTrue(len(string)>=6)
-		self.assertFalse(len(string)<6)
-	def test_password_length(self):
-		pass1=os.environ.get('pass1')
-		self.assertTrue(len(pass1)>=8 )
-		self.assertFalse(len(pass1)>8 )
-
-	def test_password_check(self):
-		REGEX = re.compile('^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-z\d]+$')
-		password=os.environ.get('pass1')
-		self.assertTrue(REGEX.match(password))
+	def test_valid_login_form(self):
+		data={'username':'Mee111111','password':'As123456'}
+		form=LoginForm(data=data)
+		self.assertTrue(form.is_valid())
 	
-	def test_equal_password(self):
-		pass1=os.environ.get('pass1')
-		pass2=os.environ.get('pass2')
-		self.assertEqual(pass1,pass2)
-
-	def create_form(self, username="meenusg", email="mghamande94@gmail.com",password="Hello123",password_again="Hello123"):
-		return User.objects.create(username=username, email=email,password=password,password_again=password_again)
-	def test_form_creation(self):
-		w = self.create_form()
-		self.assertTrue(isinstance(w, User))
-		self.assertEqual(w.__unicode__(), w.username)
-
 	
 
-	
+	def test_whatever_list_view(self):
+		w = self.create_whatever()
+		url = reverse("login")
+		resp = self.client.get(url)
+		self.assertEqual(resp.status_code, 200)
+		self.assertIn(w.title, resp.content)
+

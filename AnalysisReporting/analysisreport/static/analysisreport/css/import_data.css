@@ -47,7 +47,6 @@ signup.css:48 .nav {
 
 .dashed {
     border-style: dashed;
-    height: 150px;
     color: skyblue;
 }
 
@@ -55,7 +54,6 @@ signup.css:48 .nav {
     position: relative;
     margin: 20px;
     background-color: lightblue;
-    height: 100px;
     text-align: center;
 }
 
@@ -80,16 +78,28 @@ signup.css:48 .nav {
 
 .inner button{
     position: relative;
-    z-index: 2
+    z-index: 2;
+    display: none;
+}
+
+.inner button.active{
+    display: inline-block;
 }
 
 a {
     color: white;
 }
 
+#file-save-form {
+    margin: 40px 0 0;
+}
+
 .record-table {
     width: 100%;
+    height: 500px;
     overflow: auto;
+    border:solid 1px #ddd;
+    margin-bottom: 50px
 }
 
 .row{

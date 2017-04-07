@@ -14,7 +14,7 @@ $(document).ready(function() {
                         message:'Username should be unique and at least 6 digit long.'
                     },
                         notEmpty: {
-                        message: 'Please provide non empty username'
+                        message: 'Username cannot be empty'
                     }
                 }
             },
@@ -22,7 +22,7 @@ $(document).ready(function() {
             email: {
                 validators: {
                     notEmpty: {
-                        message: 'Please provide nonempty email address'
+                        message: 'Email cannot be empty'
                     },
                     emailAddress: {
                         message: 'Please provide valid email address'
@@ -35,41 +35,49 @@ $(document).ready(function() {
             
 
             validators:{
+                 
                  notEmpty: {
-                        //message: 'Please provide password'
+                        message: 'Password cannot be empty'
                     },
 
-                stringLength: {
-                    min: 8,
-                    max: 16,
-                    message:'Please provide minimum 8 characters long alphanumeric password, with minimum one character in uppercase'
-                
-            },
+            //     stringLength: {
+            //         min: 8,
+            //         max: 16,
+            //         message: 'Password should have length'
+                   
+            // },
 
                 regexp:{    
-                    regexp:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-z\d]+$/,
-            //         message:"Password must contain atleast 1 number and 1 letter Uppercase"
+                    regexp:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                           // 
+                           ///^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-z\d]$/,
+                   message:'Please provide minimum 8 characters long alphanumeric password, with minimum one character in uppercase'
+                
              },
             
         
         
-            identical:{
-                field:"password_again",
-                message:"Password and re-entered passwords are not matching"
-                }
+            // identical:{
+            //     field:"password_again",
+            //     message:"Password and re-entered passwords are not matching"
+            //     }
             }
         },
 
         password_again: {
             validators: {
                  notEmpty: {
-                        message: 'Please provide password'
+                        message: 'Retype Password cannot be empty'
                     },
 
                     identical:{
                         field:"password",
                         message:"Password and re-entered passwords are not matching"
                     }
+                    
+
+                    
+
                 }
             }
 

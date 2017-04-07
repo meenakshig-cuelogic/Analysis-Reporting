@@ -57,9 +57,13 @@ $(document).ready(function() {
 
     bootstrap_alert = function() {}
     bootstrap_alert.warning = function(message) {
-            $('#alert_placeholder').html('<div class="alert"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+            $('#alert_placeholder').html('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
         }
 
+    setTimeout(function() {
+
+            $('.message').fadeOut('slow');
+        }, 3000); // <-- time in milliseconds, 1000 =  1 sec
 
     $('#uploadFile').change(function(event) {
         console.log('event ==>', event);
@@ -75,7 +79,13 @@ $(document).ready(function() {
                    bootstrap_alert.warning('The file you are trying to upload is not support, please try a CSV file only.');
                     event.target.files = [];
                 }
+                else {
+                    console.log("sdfsdf");
+                    $("#upload-btn").addClass("active");
+                }
             }
+
+
         }
     });
 
