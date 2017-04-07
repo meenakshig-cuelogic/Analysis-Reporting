@@ -97,3 +97,9 @@ $(document).ready(function() {
 
 
 });
+
+function fileselect() {
+    var file_name = $('#uploadFile').val().split("\\");
+    $("#upload_file_name").show();
+    $("#upload_file_name").html(file_name[2]);
+}

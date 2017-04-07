@@ -157,8 +157,7 @@ def import_file(request):
 
 @login_required(login_url='/login1/')
 def get_file_data(request):
-    # import pdb 
-    # pdb.set_trace()
+   
     
     username=request.user.username
     outer_list=[]

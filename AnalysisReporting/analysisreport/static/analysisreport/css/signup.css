@@ -65,3 +65,6 @@ h3 {
 .form-group {
     padding: 10px;
 }
+.form-control[disabled], fieldset[disabled] .form-control { 
+   background: #96c8ff;
+}

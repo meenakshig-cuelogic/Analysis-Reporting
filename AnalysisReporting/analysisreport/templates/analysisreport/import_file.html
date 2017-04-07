@@ -67,11 +67,11 @@
         <div class="dashed">
             <section class="inner">
                 <form method="POST" id="file-upload-form" enctype="multipart/form-data" action="/analysisreport/get_file_data/">
-                    {%if upload_success%}
-                        <div class="form-group">
-                            
-                        </div>
-                    {% endif %} {% csrf_token %}
+                   
+                    <div class="form-group" id="upload_file_name" style="display: none;">
+
+                    </div>
+                     {% csrf_token %}
                     <input type="file" id="uploadFile" name="uploaded_file" onchange="fileselect()">
                     <label for="uploadFile">To import data please <span>upload</span> CSV file or <span>Drag & Drop</span></label>
                     <button type="submit" class="btn btn-primary" id='upload-btn'>Upload</button>

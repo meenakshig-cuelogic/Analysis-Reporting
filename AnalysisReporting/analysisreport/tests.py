@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.test import RequestFactory
 
-from . import views
+from .views import *
 from .models import *
 from .forms import *
 
@@ -28,7 +28,7 @@ class User_Form_Test(TestCase):
 		
 	def test_whatever_creation(self):
 		w = self.create_whatever()
-		self.assertTrue(isinstance(w,))
+		self.assertTrue(isinstance(w))
 
 	def test_valid_form(self):
 		data = {'username': 'Abcd1234','email':'abc@gmail.com','password': 'As123456','password1':'As123456'}
@@ -50,7 +50,7 @@ class User_Form_Test(TestCase):
 
 	def test_whatever_list_view(self):
 		w = self.create_whatever()
-		url = reverse("login")
+		url = reverse("login1")
 		resp = self.client.get(url)
 		self.assertEqual(resp.status_code, 200)
 		self.assertIn(w.title, resp.content)
