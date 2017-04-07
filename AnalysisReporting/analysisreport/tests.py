@@ -22,12 +22,12 @@ class Setup_Class(TestCase):
 class User_Form_Test(TestCase):
 
     
-	def create_whatever(self):
+	def create(self):
 		user=User.objects.create(username="meenakshi",email="mghamande94@gmail.com",password="As123456",password_again="As123456")
 		return user
 		
 	def test_whatever_creation(self):
-		w = self.create_whatever()
+		w = self.create()
 		self.assertTrue(isinstance(w))
 
 	def test_valid_form(self):
@@ -49,7 +49,7 @@ class User_Form_Test(TestCase):
 	
 
 	def test_whatever_list_view(self):
-		w = self.create_whatever()
+		w = self.create()
 		url = reverse("login1")
 		resp = self.client.get(url)
 		self.assertEqual(resp.status_code, 200)

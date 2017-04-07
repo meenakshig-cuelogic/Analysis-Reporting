@@ -52,7 +52,7 @@ class UserFormView(View):
                 username=form.cleaned_data['username']
                 email=form.cleaned_data['email']
                 password=form.cleaned_data['password']
-                if not (User.objects.filter(username=username).exists() ):
+                if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
                     
                     u1=User.objects.create_user(username,email,password)
                     user=authenticate(username=username,password=password)
@@ -221,7 +221,7 @@ def save_file(request):
         else:
             messages.warning(request,"Please select a file.")    
 
-    return render(request,'analysisreport/import_file.html',{'filename':file_name,'user_id':user_id,'file_data':file_data,'username':usernames})
+    return render(request,'analysisreport/import_file.html',{'filename':file_name,'user_id':user_id,'file_data':file_data,'username':username})
 
 
 def c_analysis(request):

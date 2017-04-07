@@ -11,10 +11,18 @@ from django.template.defaultfilters import filesizeformat
  
 
 class UserForm(forms.ModelForm):
-	username=forms.CharField(label='Username',widget=forms.TextInput(attrs={'size':'50','placeholder':'Username','class':'form-control'}))
-	email= forms.EmailField(label='Email Address',widget=forms.TextInput(attrs={'size':'50','placeholder':'email','class':'form-control',}))
-	password = forms.CharField(widget=forms.PasswordInput(attrs={'size':'50','placeholder':'password','class':'form-control'}))
-	password_again=forms.CharField(widget=forms.PasswordInput(attrs={'size':'50','placeholder':'retype password','class':'form-control'}))
+	username=forms.CharField(label='Username',widget=forms.TextInput(attrs=
+									{'size':'50','placeholder':'Username',
+									'class':'form-control'}))
+	email= forms.EmailField(label='Email Address',widget=forms.TextInput(attrs=
+									{'size':'50','placeholder':'email',
+									'class':'form-control',}))
+	password = forms.CharField(widget=forms.PasswordInput(attrs=
+									{'size':'50','placeholder':'password',
+									'class':'form-control'}))
+	password_again=forms.CharField(widget=forms.PasswordInput(attrs=
+									{'size':'50','placeholder':'retype password'
+									,'class':'form-control'}))
 
             
 	class Meta:
@@ -23,8 +31,12 @@ class UserForm(forms.ModelForm):
     	 
 class LoginForm(forms.Form):
 
-    username = forms.CharField(label='Username',widget=forms.TextInput(attrs={'size':'50','placeholder': 'Username','class':'form-control'}))
-    password = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'size':'50','placeholder': 'Password','class':'form-control'}))
+    username = forms.CharField(label='Username',widget=forms.TextInput(attrs=
+    								{'size':'50','placeholder': 'Username',
+    								'class':'form-control'}))
+    password = forms.CharField(label='Password',widget=forms.PasswordInput(attrs=
+    								{'size':'50','placeholder': 'Password',
+    								'class':'form-control'}))
 
 
 class UploadFileForm(forms.Form):
